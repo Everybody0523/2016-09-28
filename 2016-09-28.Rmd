@@ -1,0 +1,79 @@
+---
+title: "STA257"
+author: "Neil Montgomery | HTML is official | PDF versions good for in-class use only"
+date: "Last edited: `r format(Sys.time(), '%Y-%m-%d %H:%M')`"
+output: 
+  ioslides_presentation: 
+    css: '../styles.css' 
+    widescreen: true 
+    transition: 0.001
+---
+\newcommand\given[1][]{\:#1\vert\:}
+\newcommand\P[1]{P{\left(#1\right)}}
+# recap
+
+## the *functions* so far {.small}
+
+1. Probabilitity measure: $P:\mathcal{A} \longrightarrow \mathbb{R}$ and satisfies the three axioms. In general no "picture" possible, because its domain is a collection of events.
+
+2. **Random variable** $X:S\longrightarrow \mathbb{R}$. In general no "picture" possible, because its domain is a sample space. We care about: *its distribution*. 
+
+3. Cumulative distribution function $F$ for the random variable $X$. Defined as $F(x) = P(X \le x)$. **Completely characterizes a distribution**. A picture is possible, and the picture does give some information of limited use. NEW: Has a few technical properties of interest.
+
+4. For a *discrete* random variable, there is also a probability mass function $p(x) = P(X=x)$. **Completely characterizes a distribution**. A picture is possible, and the picture can be informative. Has a few technical properties of interest.
+ 
+## $\text{Binomial}(n,p)$ distributions
+
+The probability that someone is HIV+ given that their ELISA test comes back positive is $0.2971$. Suppose we have 100 people with a positive ELISA test. How might one visualize the distribution of the number of people who are HIV+?
+```{r, echo=FALSE, fig.align='center'}
+plot(0:100, dbinom(0:100, 100, 0.2971), ylab="P(X=k)", xlab = "x", pch=19, cex=0.5)
+```
+
+## ...a few more examples
+
+The extreme cases have already been considered. 
+
+$$P(X=n)$$
+$$P(X=0)$$
+$$1-P(X=n)$$
+$$1-P(X=0)$$
+
+Problem solving hints: look for cases where the number of trials is fixed and one is interesting in counting occurences of something.
+
+## the geometric distributions
+
+Consider a Bernoulli$(p)$ process. Count the number of trials until the first "success". 
+
+This is a random variable. Call it $X$.
+
+What is the p.m.f. of $X$?
+
+$$p(k) = P(X=k) = \begin{cases}
+(1-p)^{k-1}p & x\in\{1,2,3,\ldots\}\\
+0 & \text{otherwise}\end{cases}$$
+
+Is this a valid pmf? Yes. 
+
+We say $X$ has a geometric distribution with paramter $p$, or $X \sim \text{Geometric}(p)$.
+
+Interesting property: "memoryless"
+
+## the "negative binomial" distributions { .build }
+
+Consider a Bernoulli$(p)$ process. Count the number of trials until the $r^{th}$ "success". 
+
+This is a random variable. Call it $X$.
+
+What is the p.m.f. of $X$?
+
+$$p(k) = P(X=k) = \begin{cases}
+{{k - 1} \choose {r - 1}}p^k(1-p)^{k-r}  & x\in\{r,r+1,r+2,\ldots\}\\
+0 & \text{otherwise}\end{cases}$$
+
+Is this a valid pmf? Yes (a little obscure to figure out)
+
+We say $X$ has a negative binomial distribution with paramters $p$ and $r$, or $X \sim \text{NegBin}(p, r)$.
+
+
+
+
