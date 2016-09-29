@@ -49,7 +49,7 @@ This is a random variable. Call it $X$.
 What is the p.m.f. of $X$?
 
 $$p(k) = P(X=k) = \begin{cases}
-(1-p)^{k-1}p & x\in\{1,2,3,\ldots\}\\
+(1-p)^{k-1}p & k\in\{1,2,3,\ldots\}\\
 0 & \text{otherwise}\end{cases}$$
 
 Is this a valid pmf? Yes. 
